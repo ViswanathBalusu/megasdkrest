@@ -4,13 +4,13 @@ ARG CPU_ARCH="amd64"
 ENV HOST_CPU_ARCH=$CPU_ARCH
 
 #Deps
-RUN apk add --no-cache --update unzip tar xz wget alpine-sdk git autoconf libtool automake linux-headers musl-dev m4 \
+RUN apk add --no-cache --update unzip tar xz wget alpine-sdk git libtool autoconf automake linux-headers musl-dev m4 \
     build-base perl ca-certificates
 
 # #Libtool
 # RUN wget -q https://ftpmirror.gnu.org/libtool/libtool-2.4.6.tar.gz --no-check-certificate && \
 #     tar -xzf libtool*.tar.gz && rm -rf libtool*.tar.gz && cd libtool*/ && \
-#     ./configure --enable-static --enable-shared && make -j$(getconf _NPROCESSORS_ONLN) && make install
+#     ./configure --enable-static --enable-shared --enable-ltdl-install && make -j$(getconf _NPROCESSORS_ONLN) && make install
     
 #ZLib
 RUN wget -q https://zlib.net/zlib-1.2.11.tar.gz --no-check-certificate && \
