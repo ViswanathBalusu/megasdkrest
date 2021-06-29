@@ -4,7 +4,7 @@ ARG CPU_ARCH
 ENV CPU_ARCH=$CPU_ARCH
 
 #Deps
-RUN apk add --no-cache --update bash unzip tar xz wget alpine-sdk git autoconf automake libtool linux-headers musl-dev \
+RUN apk add --no-cache --update unzip tar xz wget alpine-sdk git autoconf automake libtool linux-headers musl-dev \
     build-base perl ca-certificates
 
 #ZLib
