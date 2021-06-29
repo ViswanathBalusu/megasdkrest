@@ -64,7 +64,7 @@ RUN mkdir -p /usr/local/go/src/ && cd /usr/local/go/src/ && \
 
 RUN git clone https://github.com/viswanathbalusu/megasdkrest && cd megasdkrest && \
     go get github.com/urfave/cli/v2 && \
-    go build -ldflags "-linkmode external -extldflags '-static' -s -w" && \
+    go build -ldflags "-linkmode external -extldflags '-static' -s -w" . && \
     mkdir -p /go/build/ && mv megasdkrpc ../build/megasdkrest-$CPU_ARCH
 
 FROM scratch AS megasdkrest

@@ -68,7 +68,6 @@ jobs:
           mkdir outputs
           cp artifacts/megasdkrest-amd64/* outputs/
           cp artifacts/megasdkrest-arm64/* outputs/
-          cp artifacts/megasdkrest-armv7/* outputs/
       - name: Create Release
         uses: softprops/action-gh-release@v1
         env:
