@@ -1,6 +1,6 @@
 FROM golang:alpine AS builder
 
-ARG CPU_ARCH
+ARG CPU_ARCH="amd64"
 ENV HOST_CPU_ARCH=$CPU_ARCH
 
 #Deps
