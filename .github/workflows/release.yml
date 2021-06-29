@@ -40,7 +40,7 @@ jobs:
           push: false
           outputs: type=tar,dest=outputs/dist-${{ matrix.dist }}.tar
           build-args: |
-            CPU_ARCH = ${{ matrix.dist }}
+            CPU_ARCH=${{ matrix.dist }}
           tags: megasdkrest:latest
 
       - name: Extract built MegaSDKREST artifacts
