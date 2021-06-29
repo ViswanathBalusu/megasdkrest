@@ -9,17 +9,17 @@ jobs:
     strategy:
       matrix:
         arch:
-#           - linux/amd64
+          - linux/amd64
           - linux/386
-#           - linux/arm64/v8
+          - linux/arm64/v8
 #           - linux/arm/v7
         include:
-#           - arch: linux/amd64
-#             dist: amd64
+          - arch: linux/amd64
+            dist: amd64
           - arch: linux/386
             dist: i386 
-#           - arch: linux/arm64/v8
-#             dist: arm64
+          - arch: linux/arm64/v8
+            dist: arm64
 #           - arch: linux/arm/v7
 #             dist: armv7
     steps:
@@ -70,7 +70,6 @@ jobs:
           cp artifacts/megasdkrest-amd64/* outputs/
           cp artifacts/megasdkrest-i386/* outputs/
           cp artifacts/megasdkrest-arm64/* outputs/
-          cp artifacts/megasdkrest-armv7/* outputs/
       - name: Create Release
         uses: softprops/action-gh-release@v1
         env:
