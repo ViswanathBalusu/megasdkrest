@@ -1,7 +1,7 @@
 FROM golang:alpine AS builder
 
 ARG CPU_ARCH
-ENV CPU_ARCH=$CPU_ARCH
+ENV HOST_CPU_ARCH=$CPU_ARCH
 
 #Deps
 RUN apk add --no-cache --update unzip tar xz wget alpine-sdk git autoconf automake libtool linux-headers musl-dev \
@@ -65,7 +65,7 @@ RUN mkdir -p /usr/local/go/src/ && cd /usr/local/go/src/ && \
 RUN git clone https://github.com/viswanathbalusu/megasdkrest && cd megasdkrest && \
     go get github.com/urfave/cli/v2 && \
     go build -ldflags "-linkmode external -extldflags '-static' -s -w" . && \
-    mkdir -p /go/build/ && mv megasdkrpc ../build/megasdkrest-$CPU_ARCH
+    mkdir -p /go/build/ && mv megasdkrpc ../build/megasdkrest-${HOST_CPU_ARCH}
 
 FROM scratch AS megasdkrest
 
