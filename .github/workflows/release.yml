@@ -46,7 +46,7 @@ jobs:
       - name: Extract built MegaSDKREST artifacts
         run: |
           cd outputs
-          tar xf dist-{{ matrix.dist }}.tar
+          tar xf dist-${{ matrix.dist }}.tar
           rm -rf *.tar
 
       - uses: actions/upload-artifact@v2
