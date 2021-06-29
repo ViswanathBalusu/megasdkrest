@@ -38,7 +38,6 @@ jobs:
           platforms: ${{ matrix.arch }}
           push: false
           outputs: type=tar,dest=outputs/dist-${{ matrix.dist }}.tar
-          target: build
           build-args: |
             CPU_ARCH = ${{ matrix.dist }}
           tags: megasdkrest:latest
