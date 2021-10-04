@@ -39,6 +39,7 @@ func callback(c *cli.Context) error {
 	port := c.String("port")
 	apikey := c.String("apikey")
 	logfile := c.String("logfile")
+	uds := c.String("uds")
 	if logfile != "" {
 		setupLoggingToFile(logfile)
 	}
@@ -50,10 +51,17 @@ func callback(c *cli.Context) error {
 	if !debug {
 		gin.SetMode(gin.ReleaseMode)
 	}
+	if uds == "" {
+	log.Printf("Serving on %s\n", uds)
+	r := gin.Default()
+	setupRoutes(r)
+	return r.Run(fmt.Sprintf("%s", uds))
+	} else {
 	log.Printf("Serving on %s:%s\n", ip, port)
 	r := gin.Default()
 	setupRoutes(r)
 	return r.Run(fmt.Sprintf("%s:%s", ip, port))
+	}
 }
 
 func main() {
@@ -89,6 +97,11 @@ func main() {
 			Name:  "logfile",
 			Value: "",
 			Usage: "log to file provided",
+		},
+		&cli.StringFlag{
+			Name: "uds",
+			Value: "",
+			Usage: "To start the server on a Unix Domain Socket",
 		},
 	}
 	app.Version = "0.1"
